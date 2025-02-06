@@ -30,7 +30,9 @@ const createNote = async (title, content) => {
     [title, content]
   );
 
-  return result;
+  const id = result.insertId;
+
+  return getNoteById(id);
 };
 
 const updateNote = async (id, title, content) => {
@@ -39,7 +41,7 @@ const updateNote = async (id, title, content) => {
     [title, content, id]
   );
 
-  return result;
+  return getNoteById(id);
 };
 
 const deleteNote = async (id) => {
@@ -47,9 +49,5 @@ const deleteNote = async (id) => {
 
   return result;
 };
-
-const result = await getNotes();
-
-console.log(result);
 
 export { getNotes, getNoteById, createNote, updateNote, deleteNote };
